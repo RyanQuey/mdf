@@ -5,7 +5,7 @@
 #     man8@pitt.edu
 #
 
-import mdfObj
+import core.mdfObj
 
 
 class mdf(object):
@@ -34,16 +34,20 @@ class mdf(object):
         #
         # we check if the global place maker for mdf exists and if it has a valid mdfConf in it
         global omdfc
-        if not isinstance(omdfc,dict):
+        try:
+            omdfc
+            if not isinstance(omdfc,dict):
+                omdfc = dict()
+            # end %if
+        except NameError:
             omdfc = dict()
-        # end %if
 
         if 'mdf' not in omdfc:
-            omdfc.mdf  = None
+            omdfc['mdf'] = None
         # end %if
 
         # check if we need to release the current singleton
-        if isinstance(action,str) and action.lower()_== 'release':
+        if isinstance(action,str) and action.lower() == 'release':
             # we need to clear the current unique instance
             # (aka singleton)
             if isinstance(omdfc.mdf,mdf):
@@ -59,7 +63,7 @@ class mdf(object):
             obj = mdf()
             # save it in persistent variable
             omdfc['mdf'] = obj
-        else
+        else:
             # returned singleton object
             obj = omdfc['mdf']
         # end %if

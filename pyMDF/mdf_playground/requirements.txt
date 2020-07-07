@@ -1,4 +1,5 @@
-wheel
+# these are what I would recommend as dependencies, but not yet needed for
+# actual mdf lib yet
 numpy
 h5py
 pandas

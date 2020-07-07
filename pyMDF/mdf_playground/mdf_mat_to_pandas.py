@@ -3,6 +3,7 @@ import numpy as np
 import h5py
 
 # for now just loading the test data twice
+# TODO consider keeping it in hdf5 format and not converting to pandas, for ease of interoperability
 def mat2pd():
     """
     Ideas to look into for doing this an easier way:

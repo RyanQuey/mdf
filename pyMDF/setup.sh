@@ -5,11 +5,13 @@ cd "$(dirname "$0")"
 
 # setup venv
 # NOTE if ran from this script, doesn't activate in the terminal you called this script from
-python3 -m venv venv
-. venv/bin/activate
+python3 -m venv venv && \
+. venv/bin/activate && \
 
 # install Python dependencies
-pip install -r requirements.txt
+pip3 install wheel
+pip3 install -r ./requirements.txt
+pip3 install -r ./mdf_playground/requirements.txt
 
 # start the notebook 
 python3 -m jupyter lab
