@@ -29,23 +29,85 @@ Deprecated versions (please do not use them):
 ## Set-up ##
 This section contains instructions on how to set up the latest/current versionof MDF
 
-* Requirements / Dependencies
-  You need to have oneof the latest versionof Matlab installed and mongodb, which could be installed locally, in a docker container (please check mdf-db project) or on a remote machine.
-  The current version has been tested on:
-  * Matlab R2019b, mdf-db v2.0 (Mongodb 4.2)
-  * Matlab R2018a, mdf-db v2.0 (Mongodb 4.2)
+### Requirements / Dependencies
+#### Mongo DB
+  You need to have one of the latest versions of Matlab installed and mongodb, which could be installed locally, in a docker container (please check mdf-db project) or on a remote machine.
+  - The current version has been tested on:
+    * Matlab R2019b, mdf-db v2.0 (Mongodb 4.2)
+    * Matlab R2018a, mdf-db v2.0 (Mongodb 4.2)
 
-* Install MDF
+  - Mongo should be running on port 15213. 
+      * The dockerized mongo container should be running on 15213 by default, but if you are running mongo locally you will have to do that yourself.
+
+  *Setting up Mongo DB in Docker:*
+
+  ```bash
+  # starting from the root dir of this repo  
+  cd mdf/test/db 
+  # builds the docker images. Basically just a wrapper around docker build
+  bash build_docker_images.bash
+  # start the container
+  docker-compose up
+  ```
+
+  You can then test to see if it's up on the right port using `docker exec`:
+  ```bash
+  docker exec -it mdf_mongodb_dev mongo  --port 15213
+  ```
+
+### Install MDF
   Clone prod-v1.6 branch or download the zip file for tag v1.6.2. Place the code in a folder that is accessible to matlab. We suggest C:/GIT/mdf under windows, or /opt/mdf under linux
 
-* Configuration
-  Start matlab, make sure to add mdf/mMdf/core folder to your matlab path.
-  Also make sure that you have an instance of MongoDB running and that it is accessible fromt he machine where you are running matlab.
-  If you do not want to add permanently mdf to your matlab path, you can use the function StartMdf that you can find under mdf/mMdf/templates. Copy it in your MATLAB folder and personalize it to your setup
+### Configure Matlab
 
-* Data Collection configuration
+#### Setting up using our setup script
+
+If you are using Linux, there is a script for you.
+- Note that this script will append some java jar paths to your `javaclasspath.txt` if one exists already
+- This script assumes that you want your mdf data and configs in your home folder
+    * If you don't, then after running the start up script you will need to change ~/Document/startMdf.m  so that it has the correct path.
+    * Eventually we would like to do this automatically using MDF_PROJECT_ROOT_PATH, but that is not implemented yet
+
+If you are not using Matlab 2020a, you will have to set your Matlab version
+
+#### Setting up manually
+* How to test MDF on your platform
+  * Linux
+    * install mdf code in a folder that matches your needs
+    * create the following structure under your home folder
+      +- mdf
+         +- conf
+         +- data
+    * make sure that mongodb is running on your local machine and is accepting connection on 15213 (see above)
+    * open matlab and run:
+        ```
+        addpath mdf core folder <your_installation_folder>/mdf/mMDF/core
+        ```
+    
+    * OUTDATED: run the test environment 1 script in mdf/mMDF/test
+        omdfc = testEnv1()
+      this function should instantiate the correct mdf environment for the test, populate with a test hierarchical structure and return the omdfc data structure as specified above.
+      it uses the following configuration file mdf/mMDF/templates/mdf.conf.test.env1.xml
+    * Once the script has run successfully, you should find the omdfc variable in your matlab workspace.
+    * If you do not find omdfc defined in your workspace, you can instantiate it with the following command:
+        omdfc = mdf.init('<your_home_folder>/mdf/conf/mdf.conf.test.env1.xml')
+    * you can now start exploring the test data from the root object that is of type subject:
+        sbj = mdf.load(struct('mdf_type':'subject')
+
+  * OS X
+    *coming soon*
+  * Windows 
+    *coming soon*
+
+### Configuration
+  - Start matlab, 
+  - Make sure to add mdf/mMdf/core folder to your matlab path.
+    * If you do not want to add permanently mdf to your matlab path, you can use the function StartMdf that you can find under mdf/mMdf/templates. Copy it in your MATLAB folder and personalize it to your setup
+  - Also make sure that you have an instance of MongoDB running and that it is accessible from the machine where you are running matlab, as described above.
+
+### Data Collection configuration
   MDF uses an xml configuration file to define which data collections are accessible. 
-  Please check under mdf/templates for confiuguration examples.
+  - Please check under `mdf/templates` for confiuguration examples.
   By default, when mdf.init or StartMdf is called, mdf looks for the file mdf.conf.xml. Multiple configurations can be used on the same machine. Just copy everything within the configuration tags and change as it is needed.
   MDF will automatically check the following folders in the user home (Linux: /home/<username>, OS X: /Users/<username>, Windows: /Users/<username>) for the mdf.conf.xml file:
   * .mdf
@@ -62,7 +124,7 @@ This section contains instructions on how to set up the latest/current versionof
   If the user would like to store the configuration file in other locations or wants to use an alternative one, just pass the full path to the conf file as it is specified in the next section
 
 
-* Matlab Startup
+### Matlab Startup
   In order to start using mdf, the user has to instantiate the core classes. The main class mdf provides a static method to set up the correct environment.
   Here are the different method that mdf environment can be initialized:
   * let mdf check the standard location and ask which configuration we would like to use
@@ -88,28 +150,4 @@ This section contains instructions on how to set up the latest/current versionof
 
   where *mdf* is class containing useful methods used throughout the framework, *conf* contains all the value defined in the configuration file, *db* is the connection to the database and *manage* is the memory management class.
   User should not be concern with this variable unless any troubleshooting is required.
-
-* How to test MDF on your platform
-  * Linux
-    * install mdf code in a folder that matches your needs
-    * create the following structure under your home folder
-      +- mdf
-         +- conf
-         +- data
-    * make sure that mongodb is running on your local machine and is accepting connection on the standard port
-    * open matlab and addpath mdf core folder <your_installation_folder>/mdf/mMDF/core
-    * run the test environment 1 script in mdf/mMDF/test
-        omdfc = testEnv1()
-      this function should instantiate the correct mdf environment for the test, populate with a test hierarchical structure and return the omdfc data structure as specified above.
-      it uses the following configuration file mdf/mMDF/templates/mdf.conf.test.env1.xml
-    * Once the script has run successfully, you should find the omdfc variable in your matlab workspace.
-    * If you do not find omdfc defined in your workspace, you can instantiate it with the following command:
-        omdfc = mdf.init('<your_home_folder>/mdf/conf/mdf.conf.test.env1.xml')
-    * you can now start exploring the test data from the root object that is of type subject:
-        sbj = mdf.load(struct('mdf_type':'subject')
-
-  * OS X
-    *coming soon*
-  * Windows 
-    *coming soon*
 
