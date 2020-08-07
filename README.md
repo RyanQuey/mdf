@@ -50,9 +50,9 @@ This section contains instructions on how to set up the latest/current versionof
   docker-compose up
   ```
 
-  You can then test to see if it's up on the right port using `docker exec`:
+  You can then test to see if it's up on the right port using `docker exec` to open the mongo shell:
   ```bash
-  docker exec -it mdf_mongodb_dev mongo  --port 15213
+  docker exec -it mdf_mongodb_dev mongo --port 15213
   ```
 
 ### Install MDF
