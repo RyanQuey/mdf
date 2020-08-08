@@ -138,7 +138,7 @@ export MATLAB_VERSION=2019a ./setup-matlab.sh
     ```
     (assuming you ran the ./scripts/setup-matlab.sh already)
 
-  Here are the different method that mdf environment can be initialized:
+#### Here are the different methods that mdf environment can be initialized:
   * let mdf check the standard location and ask which configuration we would like to use
         omdfc = mdf.init()
   * specify configuration file
