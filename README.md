@@ -68,7 +68,10 @@ If you are using Linux, there is a script for you.
     * If you don't, then after running the start up script you will need to change ~/Document/startMdf.m  so that it has the correct path.
     * Eventually we would like to do this automatically using MDF_PROJECT_ROOT_PATH, but that is not implemented yet
 
-If you are not using Matlab 2020a, you will have to set your Matlab version
+If you are not using Matlab 2020a, you will have to set your Matlab version, e.g., 
+```bash
+export MATLAB_VERSION=2019a ./setup-matlab.sh
+```
 
 #### Setting up manually
 * How to test MDF on your platform
@@ -126,6 +129,15 @@ If you are not using Matlab 2020a, you will have to set your Matlab version
 
 ### Matlab Startup
   In order to start using mdf, the user has to instantiate the core classes. The main class mdf provides a static method to set up the correct environment.
+
+  *Note that running `startMdf.m` will do this for you if you are ok with the default options:*
+    Open Matlab, and run:
+    ```
+    cd ~/Documents
+    startMdf
+    ```
+    (assuming you ran the ./scripts/setup-matlab.sh already)
+
   Here are the different method that mdf environment can be initialized:
   * let mdf check the standard location and ask which configuration we would like to use
         omdfc = mdf.init()
@@ -149,5 +161,6 @@ If you are not using Matlab 2020a, you will have to set your Matlab version
              manage: [1x1 mdfManage]
 
   where *mdf* is class containing useful methods used throughout the framework, *conf* contains all the value defined in the configuration file, *db* is the connection to the database and *manage* is the memory management class.
-  User should not be concern with this variable unless any troubleshooting is required.
+
+  User should not be concerned with this variable unless any troubleshooting is required.
 

@@ -49,3 +49,7 @@ envsubst < $parent_path/files-for-setup/startMdf.m > ~/Documents/MATLAB/startMdf
 # substitute any env vars 
 echo "Copying mdf.conf.xml to: $MDF_CONF_PATH/conf/mdf.conf.xml"
 envsubst < $parent_path/files-for-setup/mdf.conf.xml > $MDF_CONF_PATH/conf/mdf.conf.xml 
+
+# test that our setup script ran
+echo "Checking to see if our setup script ran correctly. If there's warnings about log4j or mongo logging, that's no problem. Just make sure it says 'Done!!' at the end"
+cd ~/Documents && /usr/local/MATLAB/$matlab_version/bin/matlab -batch "startMdf; exit"
