@@ -3,4 +3,5 @@ pandas
 hdf5storage
 mat4py
 pyyaml
-
+python-dotenv
+pymongo

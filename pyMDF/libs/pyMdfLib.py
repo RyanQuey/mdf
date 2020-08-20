@@ -18,8 +18,10 @@ import xml.etree.ElementTree as ET
 import os
 import h5py
 
+confRelativePath = os.environ.get("CONF_RELATIVE_PATH", '../conf/mdf.1_6.xml.conf')
+
 modulePath = os.path.dirname(os.path.abspath(__file__))
-configurationFile = os.path.join(modulePath,'../conf/mdf.1_6.xml.conf')
+configurationFile = os.path.join(modulePath, confRelativePath)
 mdfObjectTemplate = os.path.join(modulePath,'../templates/mdfObjTemplate.json')
 mdfSchemaJsFile = os.path.join(modulePath,'../../javascript/mdfDbSchema.js')
 mdfConfigurations = []
