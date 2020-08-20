@@ -9,13 +9,13 @@ class mdfConf:
     fileType ='unknown'
 
     # data read from configuration file
-    fileData
+    fileData = None
 
     # configuration data structure
-    confData
+    confData = None
 
     # temp dictionary with configuration file
-    temp
+    temp = None
 
     # configuration selected
     selection = 0

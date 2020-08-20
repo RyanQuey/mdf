@@ -5,14 +5,16 @@
 #     man8@pitt.edu
 #
 
-import mdf
-import mdfDB
-import mdfConf
-import mdfManage
+import core.mdf
+import core.mdfDB
+import core.mdfConf
+import core.mdfManage
 import sys
+# TODO consider using h5py instead, more support, more stable (hdf5storage isn't 1.0 yet)
 import hdf5storage
 import os
 import yaml
+# TODO consider just sticking to hdf5storage, depending on our use case
 import mat4py
 import json
 import copy
