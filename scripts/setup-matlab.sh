@@ -53,6 +53,7 @@ envsubst < $parent_path/files-for-setup/mdf.conf.xml > $MDF_CONF_PATH/conf/mdf.c
 # another xml file for unitTesting
 echo "Copying mdf.conf.xml.for_unitTest to: $MDF_PROJECT_ROOT_PATH/mMDF/unitTest/conf/mdf.xml.conf"
 envsubst < $parent_path/files-for-setup/mdf.conf.xml.for_unitTest > $MDF_PROJECT_ROOT_PATH/mMDF/unitTest/conf/mdf.xml.conf
+envsubst < $parent_path/files-for-setup/mdf.conf.xml.for_unitTest > $MDF_PROJECT_ROOT_PATH/pyMDF/tests/conf/mdf.xml.conf
 
 # test that our setup script ran
 echo "Checking to see if our setup script ran correctly. If there's warnings about log4j or mongo logging, that's no problem. Just make sure it says 'Done!!' at the end"
