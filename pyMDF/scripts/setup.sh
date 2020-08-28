@@ -11,9 +11,9 @@ python3 -m venv venv && \
 . venv/bin/activate && \
 
 # install Python dependencies
-pip3 install wheel
-pip3 install -r ./requirements.txt
-pip3 install -r ./mdf_playground/requirements.txt
+pip3 install wheel && \
+pip3 install -r ./requirements.txt && \
+pip3 install -r ./mdf_playground/requirements.txt && \
 
 # start the notebook 
 # TODO add an option so that this isn't started. Or better yet, maybe split it out into a separate script; one for setup, one for running

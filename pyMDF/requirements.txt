@@ -1,7 +1,12 @@
 numpy
 pandas
+# NOTE maybe don't need
 hdf5storage
+# NOTE maybe don't need
 mat4py
 pyyaml
 python-dotenv
 pymongo
+# for xml
+beautifulsoup4
+lxml
