@@ -49,8 +49,8 @@ RUN chmod -R ug+w /mdf/mongodb
 EXPOSE 15213
 
 # Set /usr/bin/mongod as the dockerized entry-point application
-# specify the conf file that we're exposing via a docker volume
-ENTRYPOINT ["/usr/bin/mongod  --config /mdf/mongodb/conf/mongod.conf"]
+# will specify the conf file that we're exposing via a docker volume in the docker-compose file instead
+ENTRYPOINT ["/usr/bin/mongod"]
 
 # volumes
 VOLUME /mdf/mongodb/conf/mongod.conf
