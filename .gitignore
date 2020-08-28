@@ -1,6 +1,6 @@
 # see this one for other good ideas: https://github.com/github/gitignore/blob/master/Python.gitignore
 # local configuration
-mMDF/unitTest/conf/mdf.xml.conf
+**/unitTest/conf/mdf.xml.conf
 
 #
 # pycharm folders

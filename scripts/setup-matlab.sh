@@ -33,10 +33,6 @@ envsubst < $parent_path/files-for-setup/javaclasspath.txt >> $matlab_configs_pat
 
 # and then check to see if the java classes from javaclasspath.txt are there
 
-#########################################
-# setup the mdf data and conf dirs
-mkdir -p $MDF_CONF_PATH/conf
-mkdir -p $MDF_CONF_PATH/data
 # this should already exist (I think Matlab makes it?), but just to make sure
 mkdir -p ~/Documents/MATLAB/
 
@@ -44,16 +40,6 @@ mkdir -p ~/Documents/MATLAB/
 # substitute any env vars within startMdf.m for their actual values
 echo "Copying startMdf.m to: ~/Documents/MATLAB/startMdf.m"
 envsubst < $parent_path/files-for-setup/startMdf.m > ~/Documents/MATLAB/startMdf.m
-
-# provide an example working conf xml file
-# substitute any env vars 
-echo "Copying mdf.conf.xml to: $MDF_CONF_PATH/conf/mdf.conf.xml"
-envsubst < $parent_path/files-for-setup/mdf.conf.xml > $MDF_CONF_PATH/conf/mdf.conf.xml 
-
-# another xml file for unitTesting
-echo "Copying mdf.conf.xml.for_unitTest to: $MDF_PROJECT_ROOT_PATH/mMDF/unitTest/conf/mdf.xml.conf"
-envsubst < $parent_path/files-for-setup/mdf.conf.xml.for_unitTest > $MDF_PROJECT_ROOT_PATH/mMDF/unitTest/conf/mdf.xml.conf
-envsubst < $parent_path/files-for-setup/mdf.conf.xml.for_unitTest > $MDF_PROJECT_ROOT_PATH/pyMDF/tests/conf/mdf.xml.conf
 
 # test that our setup script ran
 echo "Checking to see if our setup script ran correctly. If there's warnings about log4j or mongo logging, that's no problem. Just make sure it says 'Done!!' at the end"

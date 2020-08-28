@@ -58,6 +58,12 @@ This section contains instructions on how to set up the latest/current versionof
 ### Install MDF
   Clone prod-v1.6 branch or download the zip file for tag v1.6.2. Place the code in a folder that is accessible to matlab. We suggest C:/GIT/mdf under windows, or /opt/mdf under linux
 
+If you are using Linux, you can run this as well to setup MDF (whether you are using python or matlab).
+ - This initializes some configs for you
+```
+./scripts/setup-mdf.sh
+```
+
 ### Configure Matlab
 
 #### Setting up using our setup script
@@ -164,3 +170,14 @@ export MATLAB_VERSION=2019a ./setup-matlab.sh
 
   User should not be concerned with this variable unless any troubleshooting is required.
 
+### Setup Python (pyMDF)
+
+
+If you are on linux, you can run:
+```
+./pyMDF/scripts/setup.sh
+```
+
+Make sure to also run `./scripts/setup-mdf.sh` if you haven't already.
+
+See ./pyMDF/README.md for more info

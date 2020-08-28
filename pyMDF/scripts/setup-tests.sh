@@ -13,9 +13,10 @@ python3 -m venv venv && \
 # install Python dependencies
 pip3 install wheel
 pip3 install -r ./requirements.txt
-pip3 install -r ./tests/requirements.txt
+pip3 install -r ./unitTest/requirements.txt
 
 # make all local packages available to each other
 pip3 install -e .
 
 printf "To run all the tests, simply call: \n\ncd "$(dirname "$0")/.."\n. venv/bin/activate\npytest\n\n and the tests should all run"
+

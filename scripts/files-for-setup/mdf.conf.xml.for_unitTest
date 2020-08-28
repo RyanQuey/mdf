@@ -4,7 +4,7 @@
   <description>MDF file based data collection with yaml files. Used during unit testing</description>
   <constants>
    <MDF_COLLECTION_TYPE>mixed</MDF_COLLECTION_TYPE>
-   <CODE_BASE>$MDF_PROJECT_ROOT_PATH/mMDF</CODE_BASE>
+   <CODE_BASE>$MDF_PROJECT_ROOT_PATH/$MDF_IMPLEMENTATION</CODE_BASE>
    <CORE_BASE relative_path_to="CODE_BASE">core</CORE_BASE>
    <DATA_BASE relative_path_to="CODE_BASE">unitTest/data</DATA_BASE>
    <DB>
@@ -23,7 +23,7 @@
     <YAML>false</YAML>
     <DATA>MATFILE</DATA>
    </MDF_COLLECTION>
-   <CODE_BASE>$MDF_PROJECT_ROOT_PATH/mMDF</CODE_BASE>
+   <CODE_BASE>$MDF_PROJECT_ROOT_PATH/$MDF_IMPLEMENTATION</CODE_BASE>
    <CORE_BASE relative_path_to="CODE_BASE">core</CORE_BASE>
    <DATA_BASE relative_path_to="CODE_BASE">unitTest/data</DATA_BASE>
    <DB>
@@ -39,7 +39,7 @@
   <description>MDF database only data collection. Used during unit testing</description>
   <constants>
    <MDF_COLLECTION_TYPE>database</MDF_COLLECTION_TYPE>
-   <CODE_BASE>$MDF_PROJECT_ROOT_PATH/mMDF</CODE_BASE>
+   <CODE_BASE>$MDF_PROJECT_ROOT_PATH/$MDF_IMPLEMENTATION</CODE_BASE>
    <CORE_BASE relative_path_to="CODE_BASE">core</CORE_BASE>
    <DB>
     <HOST present_as="DB_HOST" present_in="constants">127.0.0.1</HOST>
@@ -54,7 +54,7 @@
   <description>MDF database only data collection. Second configuration to test reinit. Used during unit testing</description>
   <constants>
    <MDF_COLLECTION_TYPE>database</MDF_COLLECTION_TYPE>
-   <CODE_BASE>$MDF_PROJECT_ROOT_PATH/mMDF</CODE_BASE>
+   <CODE_BASE>$MDF_PROJECT_ROOT_PATH/$MDF_IMPLEMENTATION</CODE_BASE>
    <CORE_BASE relative_path_to="CODE_BASE">core</CORE_BASE>
    <DB>
     <HOST present_as="DB_HOST" present_in="constants">127.0.0.1</HOST>
