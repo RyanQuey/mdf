@@ -1,5 +1,4 @@
-import unittest
-from tests.helper_classes.test_case import TestCase
+from unitTest.helper_classes.test_case import TestCase
 
 class TestMdfConf(TestCase):
     def sum(self):
