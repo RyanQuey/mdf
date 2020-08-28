@@ -1,3 +1,9 @@
+from pathlib import Path
+import os
+
+# `path.parents[1]` is the same as `path.parent.parent`
+unitTestPath = Path(__file__).resolve().parents[1]
+
 class TestCase:
     """
     Parent class for our test cases
@@ -5,7 +11,7 @@ class TestCase:
     - Note that until we rename this one, it will also run...but that's ok
     """
     def setup(self):
-        pass
+        self.set_config_path()
 
     def run(self):
         """
@@ -19,3 +25,14 @@ class TestCase:
         """
         self.setup()
         self.run()
+
+    ################################
+    # helper methods
+    # - will be called by the above main methods
+    # - will more often be overwritten by child classes than the above main methods
+    ################################
+    def set_config_path(self):
+        """
+        set path to our conf file for testing
+        """
+        self.xmlConfFile = os.path.join(unitTestPath, "conf", "mdf.xml.conf")

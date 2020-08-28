@@ -22,6 +22,7 @@ class mdfConf:
 
     # automation
     automation = 'none'
+    # TODO exctract > extract
     automationList = ['none',' load', 'exctract', 'select', 'start']
 
     # menu type
@@ -41,6 +42,13 @@ class mdfConf:
         'MATLAB',
         'Documents/MATLAB'
     ]
+
+    # constructor
+    def __init__(self, filename):
+        """
+        takes filename (which is path to xml file)
+        """
+        self.filename = filename
 
     # methods
 
