@@ -1,4 +1,4 @@
-#
+# see this one for other good ideas: https://github.com/github/gitignore/blob/master/Python.gitignore
 # local configuration
 mMDF/unitTest/conf/mdf.xml.conf
 
@@ -10,3 +10,18 @@ mMDF/unitTest/conf/mdf.xml.conf
 # test database folders
 test/db/mongodb/db
 test/db/mongodb/log
+
+# pytest
+.pytest_cache/
+
+# all egg info dirs
+*.egg-info/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
