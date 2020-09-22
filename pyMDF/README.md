@@ -11,7 +11,8 @@ Before doing anything else, first make sure you setup MDF
 ## Start with Jupyter tutorial
 Just run `./script/setup.sh`. This will open a jupyter lab notebook for you, which walks you through a tutorial to MDF.
 
-# Run all unit tests
+# Testing
+## Run all unit tests
 ```
 ./scripts/setup-tests.sh
 . venv/bin/activate
@@ -24,3 +25,12 @@ According to the [docs](https://docs.pytest.org/en/latest/getting-started.html#r
 We are putting all our tests in `./unitTest`.
 
 We are also maintaining continuity by having tests inherit from our TestCase class.
+
+### What to add next
+* Go through existing test files (end in `*test.py`) and see if the run method has any tests that are commented out, and work on those
+* Go through existing mMdf tests and see if there are any test directories there that have not yet been replicated into pyMDF. Probably do them in the same order found in mMdf.
+
+# Mapping concepts from mMDF to pyMDF
+
+## FakeSingleton
+MDF classes that are singleton classes are mapped to Python classes that inherit from helpers/singleton.py. These are actually FakeSingletons, basically overwriting the __dict__ so that new objects share the same attributes.
