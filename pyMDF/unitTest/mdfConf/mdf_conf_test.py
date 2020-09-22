@@ -13,7 +13,9 @@ class TestMdfConf(TestCase):
         assert mdf_conf.filename == self.xmlConfFile
 
     def test_load(self):
-        # instantiate the object and load the configuration file
+        """
+        instantiate the object and load the configuration file
+        """
         mdf_conf = mdfConf(self.xmlConfFile)
 
         mdf_conf.load();
@@ -21,13 +23,49 @@ class TestMdfConf(TestCase):
         # test that file has been loaded
         assert isinstance(mdf_conf.parsed_file, BeautifulSoup)
 
+    def test_extraction(self):
+        """
+        test conf extraction from string loaded
+        TODOs to get this working
+        - implement mdf_conf.extract() method
+        - Determine what class it should be and test for that
+        """
+
+        mdf_conf = mdfConf(self.xmlConfFile)
+        mdf_conf.extract()
+
+        # test that file has been loaded
+        assert isinstance(mdf_conf.parsed_file, Map)
+
+    def test_selection(self):
+        """
+        TODOs to get this working
+        - figure out what selection is
+        - implement mdf_conf.get_selection()
+        - add test
+        """
+        pass
+
+    def test_automation(self):
+        """
+        TODOs to get this working
+        - figure out what automation is (seems just another aspect of selection)
+        - add test
+        """
+        pass
+
+    """
+    do same thing for collection_conf and constants
+    Then done with mdf_conf_test
+    """
+
     ##########################
     # override parent class methods
     ########################
     def run(self):
         self.test_instantiate()
         self.test_load()
-        # self.test_extraction()
+        self.test_extraction()
         # self.test_selection()
         # self.test_automation()
         # self.test_configuration()

@@ -103,6 +103,11 @@ class mdfConf(FakeSingleton):
         self.parsed_file = json.loads(self.raw_file_str)
 
     def __extract_xml():
+        """
+        TODO
+        """
         pass
+
     def __extract_json():
+        raise Exception("not supporting json currently")
         pass

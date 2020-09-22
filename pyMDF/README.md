@@ -34,3 +34,6 @@ We are also maintaining continuity by having tests inherit from our TestCase cla
 
 ## FakeSingleton
 MDF classes that are singleton classes are mapped to Python classes that inherit from helpers/singleton.py. These are actually FakeSingletons, basically overwriting the __dict__ so that new objects share the same attributes.
+
+### Differences from MDF
+- These singletons don't need to be released for garbage collection to work
